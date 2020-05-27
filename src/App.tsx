@@ -27,19 +27,19 @@ class App extends Component {
       }
   }
 
-  Handle=(digit) => {
+  Handle=(digit:string) => {
     const {count} = this.state
     this.setState({
       count:count==='0' ? digit : count+digit
     })
   }
 
-  checkLastChar = (expression) => {
+  checkLastChar = (expression:string) => {
     const actions = /[+/\-x*.]$/;
     return actions.test(expression);
   }
 
-  deleteElement = (expression, quantity) => {
+  deleteElement = (expression:string, quantity:number) => {
     let output = expression.split('');
   
     if (output.length > 1) {
