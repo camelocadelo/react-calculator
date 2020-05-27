@@ -1,9 +1,14 @@
 import React from 'react';
 import { StyledFunctionButton } from './styles';
 
-const FunctionButton = (props: any) => {
+interface FunctionButtonProps {
+    onClick: Function,
+    children: string
+}
+
+const FunctionButton = ({onClick, children}:FunctionButtonProps) => {
     return (
-        <StyledFunctionButton onClick={()=> props.onClick(props.children)}>{ props.children }</StyledFunctionButton>
+        <StyledFunctionButton onClick={()=> onClick(children)}>{ children }</StyledFunctionButton>
     )
 }
 
