@@ -1,11 +1,15 @@
 import React from 'react';
 import { StyledButton } from './styles';
 
-const Button = (props: any) => {
-    console.log(props);
-    console.log(props.children);
+interface ButtonProps {
+    onClick: Function,
+    children: string
+}
+
+const Button = ({onClick, children}: ButtonProps) => {
+
     return (
-        <StyledButton onClick={()=> props.onClick(props.children)}>{ props.children }</StyledButton>
+        <StyledButton onClick={()=> onClick(children)}>{ children }</StyledButton>
     )
 }
 

@@ -1,9 +1,13 @@
 import React from 'react';
 import { StyledScreen } from './styles'
 
-const Screen = (props: any) => {
+interface ScreenProps {
+  value: string
+}
+
+const Screen = ({value}: ScreenProps) => {
     return (
-    <StyledScreen>{props.value}</StyledScreen>
+    <StyledScreen>{ value }</StyledScreen>
       );
 }
  

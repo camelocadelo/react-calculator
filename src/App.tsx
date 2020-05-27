@@ -65,7 +65,7 @@ class App extends Component {
       <div className="app">
         <div className="calcContainer"> 
             <div className="row">
-              <Screen value={this.state.count}> </Screen>
+              <Screen value={this.state.count}></Screen>
             </div>
             <div className="keyboard">
             <div className="row"> 
