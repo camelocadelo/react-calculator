@@ -4,15 +4,18 @@ import { connect } from 'react-redux';
 import { handleDigitAction } from '../../actions/index';
 import { calculateAction } from '../../actions/index';
 import { clearAction } from '../../actions/index';
+import { Dispatch } from 'redux';
 
-class FunctionButton extends Component {
+interface FunctionButtonProps {
+  value: string,
+  calculate: Function,
+  clear: Function,
+  handleDigit: Function
+}
 
-    constructor(props) {
-      super(props);
-      this.handle = this.handle.bind(this);
-    }
+class FunctionButton extends Component <FunctionButtonProps, {}> {
     
-    handle(element) {
+    handle(element:string) {
       if (element === '=') {
         console.log("The element is =");
         this.props.calculate();
@@ -32,8 +35,8 @@ class FunctionButton extends Component {
 }
 }
 
-  const mapDispatchToProps = (dispatch) => ({
-    handleDigit: (digit) => dispatch(handleDigitAction(digit)),
+  const mapDispatchToProps = (dispatch: Dispatch) => ({
+    handleDigit: (digit:string) => dispatch(handleDigitAction(digit)),
     calculate: () => dispatch(calculateAction()),
     clear: () => dispatch(clearAction())
   });

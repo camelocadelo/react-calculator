@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { StyledButton } from './styles';
 import { connect } from 'react-redux';
-import { handleDigitAction } from '../../actions/index'
+import { handleDigitAction } from '../../actions/index';
+import { Dispatch } from 'redux';
 
+interface ButtonProps {
+  value: string;
+  handleDigit: Function
+}
 
-class Button extends Component {
-
+class Button extends Component <ButtonProps, {}> {
     render(){
       const { handleDigit } = this.props;
     return (
@@ -14,8 +18,8 @@ class Button extends Component {
 }
 }
 
-  const mapDispatchToProps = (dispatch) => ({
-    handleDigit: (digit) => dispatch(handleDigitAction(digit))
+  const mapDispatchToProps = (dispatch: Dispatch) => ({
+    handleDigit: (digit:string) => dispatch(handleDigitAction(digit))
   });
 
 

@@ -8,7 +8,11 @@ import { getDisplay } from './selectors/selectors';
 import { getCalcHistory } from './selectors/selectors';
 import './App.css';
 
-class App extends Component {
+interface AppProps {
+  display?: string
+}
+
+class App extends Component <AppProps, {}> {
 
   render() {
     return (
@@ -56,7 +60,7 @@ class App extends Component {
       </div>);
   }
 }
-  const mapStateToProps = state => {
+  const mapStateToProps = (state:any) => {
     const displayValue = getDisplay(state);
     const calcHistoryValue = getCalcHistory(state);
     return ({
