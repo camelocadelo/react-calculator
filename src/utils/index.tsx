@@ -1,12 +1,12 @@
 import { evaluate } from 'mathjs';
 
-export const calculateUtil = (count) => {
-    const checkLastChar =  (expression) => {
+export const calculateUtil = (count:string) => {
+    const checkLastChar =  (expression:string) => {
         const actions = /[+/\-x*.]$/;
         return actions.test(expression);
       };
     
-    const deleteElement = (expression, quantity) => {
+    const deleteElement = (expression:string, quantity:number) => {
         let output = expression.split('');
       
         if (output.length > 1) {

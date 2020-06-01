@@ -4,21 +4,31 @@ import { StyledDropDownHeader } from './styles';
 import { StyledDropDownListContainer } from './styles';
 import { StyledDropDownList } from './styles';
 import { StyledListItem } from './styles';
-
+import { Dispatch } from 'redux';
 import { getDisplay } from '../../selectors/selectors'
 import { getCalcHistory } from '../../selectors/selectors'
 
 import { connect } from 'react-redux';
 import {updateDisplayAction } from '../../actions/index';
 
-function Dropdown(props) {
+interface DropDownProps {
+  updateDisplay: Function,
+  calcHistory: any[]
+}
+
+interface IAppState {
+  display: string;
+  calcHistory: any[];
+}
+
+function Dropdown(props: DropDownProps) {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOption, setSelectedOption] = useState('');
 
     const toggling = () => setIsOpen(!isOpen);
 
-    const onOptionClicked = value => () => {
+    const onOptionClicked = (value:string) => () => {
         setSelectedOption(value);
         setIsOpen(false);
         props.updateDisplay(value);
@@ -44,7 +54,7 @@ function Dropdown(props) {
         );
     }
 
-  const mapStateToProps = state => {
+  const mapStateToProps = (state: IAppState) => {
     const displayValue = getDisplay(state);
     const calcHistoryValue = getCalcHistory(state);
     return ({
@@ -53,8 +63,8 @@ function Dropdown(props) {
     });
   };
 
-  const mapDispatchToProps = (dispatch) => ({
-    updateDisplay: (value) => dispatch(updateDisplayAction(value))
+  const mapDispatchToProps = (dispatch: Dispatch) => ({
+    updateDisplay: (value:string) => dispatch(updateDisplayAction(value))
   });
 
 

@@ -4,12 +4,17 @@ import { CLEAR } from '../actions/index';
 import { UPDATE_DISPLAY } from '../actions/index';
 import { calculateUtil } from '../utils/index';
 
-const initialState = {
+interface IAppState {
+    display: string;
+    calcHistory: any[];
+}
+
+const initialState: IAppState = {
     display: '0',
     calcHistory: []
 };
 
-const calculatorReducer = (state = initialState, action) => {
+const calculatorReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case HANDLE_DIGIT:
             return {...state,
